@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% block content %}
+{% extends 'base.html' %}{% block content %} {% load static %}
 
     <section id="showcase-inner" class="py-5 text-white">
       <div class="container">
@@ -20,7 +20,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.html"> <i class="fas fa-home"></i> Home</a>
+              <a href={% url 'pages:index' %}> <i class="fas fa-home"></i> Home</a>
             </li>
             <li class="breadcrumb-item active">About</li>
           </ol>
@@ -40,7 +40,7 @@
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt,
               pariatur!
             </p>
-            <img src="assets/img/about.jpg" alt="" />
+            <img src={% static 'img/about.jpg' %} alt="" />
             <p class="mt-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Perspiciatis esse officia repudiandae ad saepe ex, amet neque quod
@@ -52,6 +52,7 @@
           <div class="col-md-4">
             <div class="card">
               <img
+              {% comment %} fix doctor1 {% endcomment %}
                 class="card-img-top"
                 src="assets/img/doctors/kyle.jpg"
                 alt="Seller of the month"
@@ -78,6 +79,7 @@
         aperiam, unde aliquid at similique!
       </h4>
       <hr />
+      {% comment %} fix listings.html {% endcomment %}
       <a href="listings.html" class="btn btn-secondary text-white btn-lg"
         >View Our Featured Listings</a
       >
@@ -89,8 +91,9 @@
         <h2 class="text-center pb-4">Our Team</h2>
         <div class="row text-center">
           <div class="col-md-4">
+            {% comment %} fix doctor2 {% endcomment %} 
             <img
-              src="assets/img/doctors/kyle.jpg"
+            src="assets/img/doctors/kyle.jpg"
               alt=""
               class="rounded-circle mb-3 img-fluid"
               style="object-fit: cover; width: 300px; height: 300px"
@@ -105,6 +108,7 @@
           </div>
 
           <div class="col-md-4">
+            {% comment %} fix doctor3 {% endcomment %}
             <img
               src="assets/img/doctors/emma.jpg"
               alt=""
@@ -119,6 +123,7 @@
           </div>
 
           <div class="col-md-4">
+            {% comment %} fix doctor4 {% endcomment %}
             <img
               src="assets/img/doctors/jenny.jpg"
               alt=""
@@ -126,7 +131,7 @@
               style="object-fit: cover; width: 300px; height: 300px"
             />
             <h4>Jenny Cheung</h4>
-            <p class="text-success">Doctor</p>
+            <p class="text-success">Docto r</p>
             <hr />
             <p><i class="fas fa-phone"></i> (852)-333-3333</p>
             <p><i class="fas fa-envelope-open"></i> jenny@healthcare.co</p>
