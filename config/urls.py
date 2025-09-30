@@ -17,11 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from debug_toolbar.toolbar import debug_toolbar_urls
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('',include("pages.urls",namespace="pages")),
     path('listings/',include("listings.urls",
 namespace="Listings")),
     path('admin/', admin.site.urls),
-] + debug_toolbar_urls()
+] + debug_toolbar_urls() + static(settings.MEDIA_URL,
+document_root=settings.MEDIA_ROOT)
 
+admin.site.site_header = "Medial Center Admin"
+admin.site.site_title = "Medial Center Admin Portal"
+admin.site.index_title = "Welcome to Medial Center Admin Portal"

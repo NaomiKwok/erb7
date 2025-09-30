@@ -9,5 +9,5 @@ class Doctor(models.Model):
     email = models.EmailField(max_length=50, unique=True, blank=False)
     is_mvp = models.BooleanField(default=True)
     hire_date = models.DateTimeField(auto_now_add=True)
-    def _str_(self):
+    def __str__(self):
         return self.name
