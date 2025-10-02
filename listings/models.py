@@ -7,7 +7,7 @@ class Listing(models.Model):
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     district = models.CharField(max_length=50)
-    description = models.CharField(blank=True)
+    description = models.TextField(blank=True)
     services = models.CharField(max_length=200)
     service = models.IntegerField()
     screens = models.CharField(max_length=200)

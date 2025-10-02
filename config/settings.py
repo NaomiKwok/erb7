@@ -41,7 +41,9 @@ DJANGO_APP = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',]
+    'django.contrib.humanize',
+    'debug_toolbar',
+    ]
 APPLICATION_APP=[ 'pages.apps.PagesConfig',
                  'listings.apps.ListingsConfig',
                  'doctors.apps.DoctorsConfig'
