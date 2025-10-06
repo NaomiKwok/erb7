@@ -9,7 +9,7 @@
 }
 a:link,
 a:visited {
-    color: #12cde9;
+    color: #1123e4;
 }
 
 div.breadcrumbs {
@@ -29,9 +29,9 @@ input[type="submit"],
 input[type="button"],
 .submit-row input,
 a.button {
-    background: #da650b;
+    background: #9a4c10;
     color: #fff;
 }
 .brands {
-    margin-left: 100px;
+    margin-left: 4px;
 }
