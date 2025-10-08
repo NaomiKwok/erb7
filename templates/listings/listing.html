@@ -22,8 +22,8 @@
             <li class="breadcrumb-item">
             {% comment %} index.html {% endcomment %}
             <a href={% url "pages:index" %}>Home</a>
-        </li>
-           <li class="breadcrumb-item">
+            </li>
+          <li class="breadcrumb-item">
             {% comment %} listing.html {% endcomment %}
             <a href={% url "listings:listings" %}>Listings</a>
             </li>
@@ -35,20 +35,21 @@
 
     <!-- Listing -->
     <section id="listing" class="py-4">
-      <div class="container">
+      <div class= "container" >
         {% comment %} listing.html {% endcomment %}
         <a href={% url "listings:listings" %} class="btn btn-light mb-4">Back To Listings</a>
         <div class="row">
-          <div class="col-md-9">
+         <div class="col-md-9">
             <!-- Home Main Image -->
-             {% comment %} img {% endcomment %}
+            {% comment %} img {% endcomment %}
             <img
               src={{listing.photo_main.url}}
               alt=""
               class="img-main img-fluid mb-3"
             />
+
             <!-- Thumbnails -->
-            <div class="row mb-5 thumbs">
+          <div class="row mb-5 thumbs">
             {% if listing.photo_1 %}
               <div class="col-md-2">
                 <a
@@ -204,15 +205,15 @@
           </div>
           <div class="col-md-3">
             <div class="card mb-3">
-            {% comment %} img {% endcomment %}
+             {% comment %} img {% endcomment %}
               <img
                 class="card-img-top"
-                src="assets/img/doctors/kyle.jpg"
+                src={{listing.doctor.photo.url}}
                 alt="Seller of the month"
-              />
+                />
               <div class="card-body">
                 <h5 class="card-title">Medical Practitioner</h5>
-                <h6 class="text-secondary">Kyle Chan</h6>
+                <h6 class="text-secondary">{{listing.doctor.name}}</h6>
               </div>
             </div>
             <button
@@ -223,6 +224,7 @@
               Make An Inquiry
             </button>
           </div>
+         </div>
         </div>
       </div>
     </section>
