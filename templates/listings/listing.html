@@ -154,45 +154,34 @@
             <div class="row mb-5 fields">
               <div class="col-md-6">
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item text-secondary">
-                    <i class="fas fa-money-bill-alt"></i> Inpatient Fee
-                    Estimate:
-                    <span class="float-right">$20,000/Day</span>
-                  </li>
-                  <li class="list-group-item text-secondary">
-                    <i class="fas fa-bed"></i> Bedrooms:
-                    <span class="float-right">30</span>
-                  </li>
-                  <li class="list-group-item text-secondary">
-                    <i class="fas fa-bath"></i> Bathrooms:
-                    <span class="float-right">Private</span>
-                  </li>
-                  <li class="list-group-item text-secondary">
-                    <i class="fas fa-dumbbell"></i> Treatment:
-                    <span class="float-right"> Have </span>
-                  </li>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-th-large"></i> Services {{listing.service}}
+                  </div>
+                  <div class="col-6">
+                    <i class="fas fa-dumbbell"></i> Screens {{listing.screen}} 
+                  </div>
+                </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-bed"></i> Rooms {{listing.rooms}}
+                  </div>
+                  <div class="col-6">
+                    <i class="fas fa-bath"></i> Professionals {{listing.professional}}
+                  </div>
+                </div>
+                <hr />
+                <div class="row py-2 text-secondary">
+                  <div class="col-12"><i class="fas fa-user"></i> {{listing.doctor.name}}</div>
+                </div>
+                <div class="row text-secondary pb-2">
+                  <div class="col-12">
+                    <i class="fas fa-clock"></i> Reservation required
+                  </div>
+                </div>
                 </ul>
               </div>
-              <div class="col-md-6">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item text-secondary">
-                    <i class="fas fa-th-large"></i> Restrooms:
-                    <span class="float-right">Have</span>
-                  </li>
-                  <li class="list-group-item text-secondary">
-                    <i class="fas fa-square"></i> Specialized Care:
-                    <span class="float-right">No</span>
-                  </li>
-                  <li class="list-group-item text-secondary">
-                    <i class="fas fa-calendar"></i> Preventative Services:
-                    <span class="float-right">Have</span>
-                  </li>
-                  <li class="list-group-item text-secondary">
-                    <i class="fas fa-bed"></i> Minor Surgical Procedures:
-                    <span class="float-right">No</span>
-                  </li>
-                </ul>
-              </div>
+              
             </div>
 
             <!-- Description -->
@@ -246,6 +235,7 @@
             <form action="{% url 'contacts:contact' %}" method="POST">
               {% csrf_token %}
               <input type="hidden" name="listing_id" value="{{listing.id}}" />
+              <input type="hidden" name="doctor_email" value="{{listing.doctor.email}}" />
               {% if user.is_authenticated %}
               <input type="hidden" name="user_id" value="{{user.id}}" />
               {% else %}

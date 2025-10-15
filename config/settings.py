@@ -94,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'clinic',
         'USER': 'postgres',
-        'PASSWORD': '827',
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -155,3 +155,14 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success',
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com' 
+ # Replace with your email provider's SMTP host (e.g., smtp.gmail.com)
+EMAIL_PORT = 587 # Common port for TLS/STARTTLS. Use 465 for SSL.
+EMAIL_USE_TLS = True # Set to True for TLS/STARTTLS. Set to False if using SSL.
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Your email address
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') # Your email password or app-specific password
+DEFAULT_FROM_EMAIL = 'naomikwokster@gmail.com'  # The default sender email address
+
+#tcmd nkpd wmhp vnjg
