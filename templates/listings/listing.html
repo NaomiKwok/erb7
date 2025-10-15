@@ -155,20 +155,12 @@
               <div class="col-md-6">
                 <ul class="list-group list-group-flush">
                 <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-th-large"></i> Services {{listing.service}}
-                  </div>
-                  <div class="col-6">
-                    <i class="fas fa-dumbbell"></i> Screens {{listing.screen}} 
-                  </div>
+                  <div class="col-6"><i class="fas fa-th-large"></i> Services {{listing.service}}</div>
+                  <div class="col-6"><i class="fas fa-dumbbell"></i> Screens {{listing.screen}}</div>
                 </div>
                 <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-bed"></i> Rooms {{listing.rooms}}
-                  </div>
-                  <div class="col-6">
-                    <i class="fas fa-bath"></i> Professionals {{listing.professional}}
-                  </div>
+                  <div class="col-6"><i class="fas fa-bed"></i> Rooms {{listing.rooms}}</div>
+                  <div class="col-6"><i class="fas fa-bath"></i> Professionals {{listing.professional}}</div>
                 </div>
                 <hr />
                 <div class="row py-2 text-secondary">
@@ -184,17 +176,36 @@
               
             </div>
 
-            <!-- Description -->
+            <!-- professional -->
             <div class="row mb-5">
-              <div class="col-md-12">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Mollitia recusandae esse reiciendis officia omnis non rerum
-                dicta cupiditate nostrum molestias deserunt aut minus inventore
-                animi atque, consequuntur ad fugit. Possimus culpa blanditiis
-                repellendus ipsa similique ullam, natus error dolor harum.
-              </div>
+              <h4 class="mr-3 text-secondary">Professionals: </h4>
+              {% if listing.professionals.all %} <!-- Check if there are any professionals -->
+              <ul>
+                {% for professional in listing.professional.all %}
+              <!-- Access fields from the Subject model (e.g., name)-->
+                <li class="mr-3"><h4>{{ professional.name }}</h4></li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <h4> No Professionals </h4>
+              {% endif %}
             </div>
-          </div>
+
+            <!-- services -->
+            <div class="row mb-5">
+              <h4 class="mr-3 text-secondary">Services: </h4>
+              {% if listing.services.all %}
+              {% for service_tag in listing.services.all %}
+              <ul>
+                <li class="mr-3"><h4>{{ service_tag.name | title }}</h4></li>
+              </ul>
+              {% endfor %}
+              {% else %}
+                <h4> No Services </h4>
+              {% endif %}
+            </div>              
+
+            <div class="col-md-12">{{listing.description}}</div>
         </div>
           <div class="col-md-3">
             <div class="card mb-3">
