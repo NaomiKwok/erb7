@@ -50,8 +50,8 @@
               alt=""
               class="img-main img-fluid mb-3"
             />
-          </div>
-            <!-- Thumbnails -->
+        
+          <!-- Thumbnails -->
           <div class="row mb-5 thumbs">
             {% if listing.photo_1 %}
               <div class="col-md-2">
@@ -149,76 +149,92 @@
                 </a>
               </div>
             {% endif %}
-
+          </div>
+            
             <!-- Fields -->
-            <div class="row mb-5 fields">
-              <div class="col-md-6">
-                <ul class="list-group list-group-flush">
-                <div class="row py-2 text-secondary">
-                  <div class="col-6"><i class="fas fa-th-large"></i> Services {{listing.service}}</div>
-                  <div class="col-6"><i class="fas fa-dumbbell"></i> Screens {{listing.screen}}</div>
+          <div class="row mb-5 fields">
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <div class="row text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-th-large">                
+                    </i> Services {{listing.service}}
+                  </div>
+                  <div class="col-6">
+                    <i class="fas fa-dumbbell"></i> Screens {{listing.screen}}
+                  </div>
                 </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6"><i class="fas fa-bed"></i> Rooms {{listing.rooms}}</div>
-                  <div class="col-6"><i class="fas fa-bath"></i> Professionals {{listing.professional}}</div>
+                <div class="row text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-bed"></i> Rooms {{listing.rooms}}
+                  </div>
+                  <div class="col-6">
+                    <i class="fas fa-bath"></i> Professionals {{listing.professional}}
+                  </div>
                 </div>
-                <hr />
-                <div class="row py-2 text-secondary">
-                  <div class="col-12"><i class="fas fa-user"></i> {{listing.doctor.name}}</div>
+                <div class="row text-warning">
+                  <div class="col-6">
+                    <i class="fas fa-user"></i> {{listing.doctor.name}}
+                  </div>
                 </div>
-                <div class="row text-secondary pb-2">
-                  <div class="col-12">
+                <div class="row text-warning">
+                  <div class="col-6">
                     <i class="fas fa-clock"></i> Reservation required
                   </div>
                 </div>
-                </ul>
-              </div>
-              
+              </ul>
             </div>
+          </div>
 
             <!-- professional -->
-            <div class="row mb-5">
-              <h4 class="mr-3 text-secondary">Professionals: </h4>
-              {% if listing.professionals.all %} <!-- Check if there are any professionals -->
-              <ul>
-                {% for professional in listing.professional.all %}
-              <!-- Access fields from the Subject model (e.g., name)-->
-                <li class="mr-3"><h4>{{ professional.name }}</h4></li>
-                {% endfor %}
-              </ul>
-              {% else %}
-              <h4> No Professionals </h4>
-              {% endif %}
+            <div class="row text-dark">
+              <p class="mr-3 text-secondary">Professionals:</p>
+                <div class="col-5">
+                  {% if listing.professionals.all %} <!-- Check if there are any professionals -->
+                    {% for professional in listing.professionals.all %}
+                      <ul>
+                        <li class="mr-3"><p>{{ professional.name }}</p></li> <!-- Access fields from the Subject model (e.g., name)-->
+                      </ul>
+                    {% endfor %}
+                  {% else %}
+                    <p> No Professionals </p>
+                  {% endif %}
+                </div>
+            </div>
+            
+            <!-- services -->
+            <div class="row mb-6">
+              <p class="mr-5 text-secondary">Services:</p>
+                <div class="col-6">
+                  {% if listing.services.all %}
+                    {% for service_tag in listing.services.all %}
+                      <ul>
+                        <li class="mr-3"><p>{{ service_tag.name | title }}</p></li>
+                      </ul>
+                  {% endfor %}
+                {% else %}
+                  <p> No Services </p>
+                {% endif %}
+                </div>
             </div>
 
-            <!-- services -->
+            <!--Description -->
             <div class="row mb-5">
-              <h4 class="mr-3 text-secondary">Services: </h4>
-              {% if listing.services.all %}
-              {% for service_tag in listing.services.all %}
-              <ul>
-                <li class="mr-3"><h4>{{ service_tag.name | title }}</h4></li>
-              </ul>
-              {% endfor %}
-              {% else %}
-                <h4> No Services </h4>
-              {% endif %}
-            </div>              
-
-            <div class="col-md-12">{{listing.description}}</div>
-        </div>
-          <div class="col-md-3">
+              <div class="col-md-12">{{listing.description}} </div>
+            </div>
+          </div>
+            <div class="col-md-3">
             <div class="card mb-3">
               {% comment %} img {% endcomment %}
-              <img
-                class="card-img-top"
-                src={{listing.doctor.photo.url}}
-                alt="Seller of the month"
-                />
-              <div class="card-body">
-                <h5 class="card-title">Medical Practitioner</h5>
-                <h6 class="text-secondary">{{listing.doctor.name}}</h6>
-              </div>
+            <img
+            class="card-img-top"
+            src={{listing.doctor.photo.url}}
+            alt="Seller of the month"
+            />
+            <div class="card-body">
+            <h5 class="card-title">Medical Practitioner</h5>
+            <h6 class="text-secondary">{{listing.doctor.name}}</h6>
+            </div>
             </div>
             <button
               class="btn-primary btn-block btn-lg"
@@ -227,9 +243,9 @@
             >
               Make An Inquiry
             </button>
+            </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- Inquiry Modal -->
